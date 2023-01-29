@@ -5,9 +5,9 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'blog_selman',
+  title: 'selman_blog',
 
-  projectId: '7sa5n3rx',
+  projectId: 'fe7jgu41',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool()],
