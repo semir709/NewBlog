@@ -9,7 +9,7 @@ export const takeArticles = `*[_type == "article"] {
         image,
     },
     mainImage {
-        assets -> {
+        asset -> {
             url
         }
     },

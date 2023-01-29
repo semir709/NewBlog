@@ -7,27 +7,17 @@ import AppWrap from "../wrapper/AppWrap";
 import { client } from "../client";
 import { takeArticles } from "../utlis/data";
 
-const data = [
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-];
-
 const Home = () => {
-  const [searching, setSearching] = useState(false);
+  const [searching, setSearching] = useState([]);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const query = takeArticles;
 
     client.fetch(query).then((data) => {
       console.log(data);
+      setData(data);
+      setSearching(false);
     });
   }, []);
 
@@ -36,15 +26,15 @@ const Home = () => {
       <SearchBar searching={searching} setSearching={setSearching} />
 
       {searching ? (
-        <Loading
-          text={"Loading more content..."}
-          textSize={"30px"}
-          fontSize={30}
-        />
+        <Loading text={"Loading content..."} textSize={"30px"} fontSize={30} />
       ) : (
         <div className="mt-[50px] flex flex-wrap justify-between">
-          {data.map(({ src, name, tags }) => (
-            <Card src={src} name={name} tags={tags} />
+          {data.map(({ title, mainImage, author, categories, publishedAt }) => (
+            <Card
+              src={mainImage.asset.url}
+              title={title}
+              categories={categories}
+            />
           ))}
         </div>
       )}
