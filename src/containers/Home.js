@@ -1,90 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import Card from "../components/Card";
 import Loading from "../components/Loading";
 import AppWrap from "../wrapper/AppWrap";
 
+import { client } from "../client";
+import { takeArticles } from "../utlis/data";
+
 const data = [
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
-  {
-    src: "",
-    name: "Some deer",
-    tags: ["Nature", "Wild", "Green"],
-  },
   {
     src: "",
     name: "Some deer",
@@ -99,6 +22,15 @@ const data = [
 
 const Home = () => {
   const [searching, setSearching] = useState(false);
+
+  useEffect(() => {
+    const query = takeArticles;
+
+    client.fetch(query).then((data) => {
+      console.log(data);
+    });
+  }, []);
+
   return (
     <div className="flex flex-col items-center mb-[100px] max-w-[800px]">
       <SearchBar searching={searching} setSearching={setSearching} />
