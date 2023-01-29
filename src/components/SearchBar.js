@@ -1,12 +1,10 @@
 import React, { useRef } from "react";
 import { search } from "../assets/images/index.js";
 
-const SearchBar = ({ searching, setSearching }) => {
+const SearchBar = ({ loading, setLoading, setSearchValue, searchValue }) => {
   const change = (e) => {
     if (e.target.value.length > 0) {
-      setSearching(true);
-    } else {
-      setSearching(false);
+      setSearchValue(e.target.value);
     }
   };
   return (
