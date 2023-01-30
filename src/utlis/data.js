@@ -1,4 +1,7 @@
-export const takeArticles = `*[_type == "article"] {
+const pageSize = 4;
+// const currentPage = 0;
+
+export const takeArticles = (currentPage = 0) => `*[_type == "article"] {
     _id,
     title,
     slug,
@@ -19,7 +22,7 @@ export const takeArticles = `*[_type == "article"] {
     publishedAt,
 
     
-}`;
+}[${currentPage * pageSize} ... ${(currentPage + 1) * pageSize}]`;
 
 export const searchQuery = (searchTerm) => {
   const query = `*[_type == "article" && (title match '${searchTerm}*' || categories[]->title match '${searchTerm}*' || author->name match '${searchTerm}*')]{
@@ -41,6 +44,6 @@ export const searchQuery = (searchTerm) => {
         title, 
     },
     publishedAt,
-            }`;
+            } [0 ... 5]`;
   return query;
 };
