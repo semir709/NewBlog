@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { empty } from "../assets/images";
 import { client } from "../client";
-import { searchQuery, takeArticles } from "../utlis/data";
+import { searchQuery } from "../utlis/data";
 import useDebounce from "../utlis/useDebunce";
 import Card from "./Card";
 
@@ -30,8 +31,17 @@ const Search = ({ searchValue }) => {
   }, [debouncedSearchValue]);
 
   return (
-    <div>
-      {isDefault && <h2>Is default</h2>}
+    <div className=" w-full">
+      {isDefault && (
+        <div className="pt-5">
+          <p className="opacity-50 text-xl">You can search the articles by:</p>
+          <ul>
+            <li className="">Title</li>
+            <li className="">Author Name</li>
+            <li className="">Categories</li>
+          </ul>
+        </div>
+      )}
 
       {data.length > 0 && (
         <div className="mt-[50px] flex flex-wrap justify-between">
@@ -51,7 +61,15 @@ const Search = ({ searchValue }) => {
 
       {data.length <= 0 &&
         loading === false &&
-        debouncedSearchValue.length > 0 && <h2>Not match articles</h2>}
+        debouncedSearchValue.length > 0 && (
+          <div className="p-5 flex flex-col items-center">
+            <img width={300} src={empty} alt={empty} />
+
+            <p className="text-1xl opacity-50">
+              There is no any article that match your search value
+            </p>
+          </div>
+        )}
     </div>
   );
 };
