@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import { AiOutlineCloseCircle, AiOutlineSearch } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SearchBar = ({ setSearchValue, searchValue }) => {
   const inputRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const change = (e) => {
     setSearchValue(e.target.value);
     setIsActive(true);
@@ -32,14 +33,14 @@ const SearchBar = ({ setSearchValue, searchValue }) => {
         placeholder="Search"
       />
 
-      {isActive && (
+      {location.pathname === "/search" && (
         <AiOutlineCloseCircle
           fontSize={25}
           className="text-[#B6B6B6] cursor-pointer"
           onClick={clearData}
         />
       )}
-      {isActive === false && (
+      {location.pathname === "/" && (
         <label htmlFor="search" className="cursor-pointer">
           <AiOutlineSearch fontSize={25} className="text-[#B6B6B6] " />
         </label>

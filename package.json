@@ -13,6 +13,8 @@
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
+    "react-share": "^4.4.1",
+    "react-social-icons": "^5.15.0",
     "slate": "^0.88.1",
     "slate-react": "^0.88.2",
     "vanta": "^0.5.24",

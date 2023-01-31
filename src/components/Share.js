@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import { share } from "../assets/images/index";
 import { facebook, instagram, twitter } from "../assets/images/index";
 
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  RedditShareButton,
+  TwitterShareButton,
+} from "react-share";
+
+import { SocialIcon } from "react-social-icons";
+
 const Share = () => {
   const [toggle, setToggle] = useState(false);
 
@@ -9,6 +18,8 @@ const Share = () => {
     if (toggle === true) setToggle(false);
     if (toggle === false) setToggle(true);
   };
+
+  const website = "http://localhost:3000/"; //add url of the webiste
 
   return (
     <div className="realtive">
@@ -26,27 +37,42 @@ const Share = () => {
           <p className="text-[25px] ">Share</p>
           <div className="bg-white h-[2px] w-full mb-3"></div>
           <div className="flex justify-around">
-            <div className="w-[30px] flex justify-center mx-2 cursor-pointer">
-              <img
-                className="object-cover"
-                src={facebook}
-                alt={facebook.slice(0, 4)}
+            <FacebookShareButton url={website} style={{ margin: 5 }}>
+              <SocialIcon
+                network="facebook"
+                round={true}
+                fgColor="#00C6BA"
+                bgColor="#ffff"
+                style={{ height: 35, width: 35 }}
               />
-            </div>
-            <div className="w-[30px] flex justify-center mx-2 cursor-pointer">
-              <img
-                className="object-cover"
-                src={twitter}
-                alt={twitter.slice(0, 4)}
+            </FacebookShareButton>
+            <TwitterShareButton url={website} style={{ margin: 5 }}>
+              <SocialIcon
+                network="twitter"
+                round={true}
+                fgColor="#00C6BA"
+                bgColor="#ffff"
+                style={{ height: 35, width: 35 }}
               />
-            </div>
-            <div className="w-[30px] flex justify-center mx-2 cursor-pointer">
-              <img
-                className="object-cover"
-                src={instagram}
-                alt={instagram.slice(0, 4)}
+            </TwitterShareButton>
+            <RedditShareButton url={website} style={{ margin: 5 }}>
+              <SocialIcon
+                network="reddit"
+                round={true}
+                fgColor="#00C6BA"
+                bgColor="#ffff"
+                style={{ height: 35, width: 35 }}
               />
-            </div>
+            </RedditShareButton>
+            <LinkedinShareButton url={website} style={{ margin: 5 }}>
+              <SocialIcon
+                network="linkedin"
+                round={true}
+                fgColor="#00C6BA"
+                bgColor="#ffff"
+                style={{ height: 35, width: 35 }}
+              />
+            </LinkedinShareButton>
           </div>
         </div>
       )}
