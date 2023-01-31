@@ -19,8 +19,11 @@ const Card = React.forwardRef(({ src, title, categories }, ref) => {
       <p className="text-3xl m-5">{title}</p>
 
       <div className="flex w-full px-2 mt-5">
-        {categories?.map(({ title }) => (
-          <div className="bg-secondary px-2 rounded-lg ml-2 text-white">
+        {categories?.map(({ title }, index) => (
+          <div
+            key={index}
+            className="bg-secondary px-2 rounded-lg ml-2 text-white"
+          >
             {title}
           </div>
         ))}
