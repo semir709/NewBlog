@@ -55,3 +55,33 @@ export const searchQuery = (searchTerm) => {
             } [0 ... 5]`;
   return query;
 };
+
+export const takeArticle = (slug) => {
+  const query = `*[_type == "article" && slug.current == '${slug}'] {
+    _id,
+    title,
+    slug,
+    author -> {
+        _id,
+        name,
+        slug,
+        image {
+            asset->{
+                url
+            }
+        },
+    },
+    mainImage {
+        asset -> {
+            url
+        }
+    },
+    categories[] -> {
+        title, 
+    },
+    publishedAt,
+    content
+  }`;
+
+  return query;
+};

@@ -42,16 +42,22 @@ const Data = () => {
       setHasMore(newData.length > 0);
     });
   }, [page]);
+  console.log(data);
 
   return (
     <div className="mx-2">
       {data.length > 0 && (
         <div className="mt-[50px] flex flex-wrap md:justify-between justify-center">
           {data.map(
-            ({ title, mainImage, author, categories, publishedAt }, index) => {
+            (
+              { title, mainImage, author, categories, publishedAt, slug },
+              index
+            ) => {
               if (data.length === index + 1) {
                 return (
                   <Card
+                    slug={slug}
+                    key={index}
                     ref={lastBookElementRef}
                     src={mainImage?.asset?.url}
                     title={title}
@@ -63,6 +69,8 @@ const Data = () => {
               } else {
                 return (
                   <Card
+                    slug={slug}
+                    key={index}
                     src={mainImage?.asset?.url}
                     title={title}
                     categories={categories}

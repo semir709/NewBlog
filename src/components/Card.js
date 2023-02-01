@@ -3,11 +3,14 @@ import React from "react";
 import { deer } from "../assets/images/index";
 import { urlFor } from "../client";
 
+import { useNavigate } from "react-router-dom";
+
 const Card = React.forwardRef(
-  ({ src, title, categories, author, publishedAt }, ref) => {
-    console.log(publishedAt);
+  ({ src, title, categories, author, publishedAt, slug }, ref) => {
+    const navigate = useNavigate();
     return (
       <div
+        onClick={() => navigate(`/article/${slug?.current}`)}
         ref={ref}
         className="bg-white drop-shadow-md rounded-lg min-[370px]:w-[350px] w-full min-[370px]:h-[350px] h-fit flex flex-col items-center cursor-pointer mx-2 my-5"
       >

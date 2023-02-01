@@ -2,15 +2,16 @@ import "./App.css";
 import Navigation from "./components/Navigation";
 import { Route, Routes } from "react-router-dom";
 import Home from "./containers/Home";
+import Article from "./containers/Article";
 function App() {
   return (
     <>
       <Navigation />
 
-      <div className=" mt-[150px]">
+      <div className=" mt-[150px] flex justify-center">
         <Routes>
           <Route path="/*" element={<Home />}></Route>
-          <Route path="/article" element={<p>Article</p>}></Route>
+          <Route path="/article/:slug" element={<Article />}></Route>
           <Route path="/contact" element={<p>Contact</p>}></Route>
           <Route path="/about" element={<p>About me</p>}></Route>
         </Routes>

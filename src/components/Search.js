@@ -48,9 +48,14 @@ const Search = ({ searchValue }) => {
       {data.length > 0 && (
         <div className="mt-[50px] flex flex-wrap md:justify-between justify-center">
           {data.map(
-            ({ title, mainImage, author, categories, publishedAt }, index) => {
+            (
+              { title, mainImage, author, categories, publishedAt, slug },
+              index
+            ) => {
               return (
                 <Card
+                  slug={slug}
+                  key={index}
                   src={mainImage?.asset?.url}
                   title={title}
                   categories={categories}
