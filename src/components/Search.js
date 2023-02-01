@@ -30,6 +30,8 @@ const Search = ({ searchValue }) => {
     }
   }, [debouncedSearchValue]);
 
+  console.log(data);
+
   return (
     <div className=" w-full">
       {isDefault && (
@@ -44,7 +46,7 @@ const Search = ({ searchValue }) => {
       )}
 
       {data.length > 0 && (
-        <div className="mt-[50px] flex flex-wrap justify-between">
+        <div className="mt-[50px] flex flex-wrap md:justify-between justify-center">
           {data.map(
             ({ title, mainImage, author, categories, publishedAt }, index) => {
               return (
@@ -52,6 +54,8 @@ const Search = ({ searchValue }) => {
                   src={mainImage?.asset?.url}
                   title={title}
                   categories={categories}
+                  author={author}
+                  publishedAt={publishedAt}
                 />
               );
             }

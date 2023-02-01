@@ -5,7 +5,7 @@ const AppWrap = (Component) =>
   function HOC() {
     return (
       <div className="w-full min-h-screen flex flex-col items-center">
-        <div className="fixed top-[50%] left-[10px]">
+        <div className="fixed top-[50%] left-[10px] z-50">
           <Share />
         </div>
         <Component />

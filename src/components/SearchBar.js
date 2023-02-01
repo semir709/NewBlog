@@ -22,7 +22,7 @@ const SearchBar = ({ setSearchValue, searchValue }) => {
     navigate("/");
   };
   return (
-    <div className="w-[400px] rounded-md border-[#B6B6B6] border pl-3 flex items-center">
+    <div className="sm:w-[400px] rounded-md border-[#B6B6B6] border pl-3 flex items-center mx-2">
       <input
         ref={inputRef}
         onChange={change}

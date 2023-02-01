@@ -44,9 +44,9 @@ const Data = () => {
   }, [page]);
 
   return (
-    <div>
+    <div className="mx-2">
       {data.length > 0 && (
-        <div className="mt-[50px] flex flex-wrap justify-between">
+        <div className="mt-[50px] flex flex-wrap md:justify-between justify-center">
           {data.map(
             ({ title, mainImage, author, categories, publishedAt }, index) => {
               if (data.length === index + 1) {
@@ -56,6 +56,8 @@ const Data = () => {
                     src={mainImage?.asset?.url}
                     title={title}
                     categories={categories}
+                    author={author}
+                    publishedAt={publishedAt}
                   />
                 );
               } else {
@@ -64,6 +66,8 @@ const Data = () => {
                     src={mainImage?.asset?.url}
                     title={title}
                     categories={categories}
+                    author={author}
+                    publishedAt={publishedAt}
                   />
                 );
               }

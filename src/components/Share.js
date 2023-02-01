@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { share } from "../assets/images/index";
-import { facebook, instagram, twitter } from "../assets/images/index";
 
 import {
   FacebookShareButton,

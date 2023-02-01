@@ -9,7 +9,11 @@ export const takeArticles = (currentPage = 0) => `*[_type == "article"] {
         _id,
         name,
         slug,
-        image,
+        image {
+            asset->{
+                url
+            }
+        },
     },
     mainImage {
         asset -> {
@@ -33,7 +37,11 @@ export const searchQuery = (searchTerm) => {
         _id,
         name,
         slug,
-        image,
+        image {
+            asset->{
+                url
+            }
+        },
     },
     mainImage {
         asset -> {
