@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { client } from "../client";
+import { client, urlFor } from "../client";
 import { takeArticle } from "../utlis/data";
+import { PortableText } from "@portabletext/react";
+import { getImageDimensions } from "@sanity/asset-utils";
 
 const Article = () => {
   const { slug } = useParams();
@@ -14,7 +16,67 @@ const Article = () => {
     });
   }, [slug]);
 
-  console.log(data);
+  const SampleImageComponent = ({ value, isInline }) => {
+    const { width, height } = getImageDimensions(value.image);
+    return (
+      <>
+        {isInline === false ? (
+          <figure className="my-[50px] w-full flex flex-col items-center">
+            <img
+              className="rounded-md"
+              src={urlFor(value.image.asset)
+                // .image(value.image.asset)
+                .width(isInline ? 100 : 800)
+                .fit("max")
+                .auto("format")
+                .url()}
+              alt={value.alternative || " "}
+              loading="lazy"
+              style={{
+                // Display alongside text if image appears inside a block text span
+                display: isInline ? "inline-block" : "block",
+
+                // Avoid jumping around with aspect-ratio CSS property
+                aspectRatio: width / height,
+              }}
+            />
+
+            <figcaption className="text-xl mt-3">{value.caption}</figcaption>
+          </figure>
+        ) : (
+          <img
+            className="rounded-md"
+            src={urlFor(value.image.asset)
+              // .image(value.image.asset)
+              .width(isInline ? 100 : 800)
+              .fit("max")
+              .auto("format")
+              .url()}
+            alt={value.alternative || " "}
+            loading="lazy"
+            style={{
+              // Display alongside text if image appears inside a block text span
+              display: isInline ? "inline-block" : "block",
+
+              // Avoid jumping around with aspect-ratio CSS property
+              aspectRatio: width / height,
+            }}
+          />
+        )}
+      </>
+    );
+  };
+
+  const serializer = {
+    types: {
+      imageBlock: SampleImageComponent,
+    },
+    block: {
+      h2: ({ children }) => <h2 className="text-[50px]">{children}</h2>,
+    },
+  };
+
+  // console.log(data);
 
   return (
     <>
@@ -63,11 +125,7 @@ const Article = () => {
             ))}
           </div>
 
-          {/* <div>
-            {data.content.map(() => {
-
-            })}
-          </div> */}
+          <PortableText value={data.content} components={serializer} />
         </div>
       )}
     </>

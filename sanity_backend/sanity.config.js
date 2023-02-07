@@ -3,6 +3,8 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 
+console.log(schemaTypes)
+
 export default defineConfig({
   name: 'default',
   title: 'selman_blog',

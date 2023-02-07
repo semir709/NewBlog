@@ -50,12 +50,25 @@ export default {
       of: [
         {
           type: 'block',
+          of: [
+            {
+              name: 'imageBlock',
+              type: 'imageBlock',
+              title: 'imageInline',
+            },
+          ],
+          // marks: {
+          //   annotations: [
+          //     {
+          //       title: 'Inline image',
+          //       name: 'inlineImage',
+          //       type: 'image',
+          //     },
+          //   ],
+          // },
         },
         {
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
+          type: 'imageBlock',
         },
       ],
     },
