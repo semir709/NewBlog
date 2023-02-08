@@ -4,6 +4,7 @@ import { client, urlFor } from "../client";
 import { takeArticle } from "../utlis/data";
 import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
+import { CopyBlock, dracula } from "react-code-blocks";
 
 const Article = () => {
   const { slug } = useParams();
@@ -70,18 +71,59 @@ const Article = () => {
   const serializer = {
     types: {
       imageBlock: SampleImageComponent,
+      codeBlock: (props) => (
+        <CopyBlock
+          language={props.value.language}
+          text={props.value.code}
+          theme={dracula}
+        />
+        // <p>{JSON.stringify(props.value)}</p>
+      ),
+    },
+
+    marks: {
+      link: ({ children, value }) => {
+        const target = "_blank";
+        return (
+          <a
+            className="cursor-pointer text-primary "
+            target={target}
+            href={value?.href}
+          >
+            {children}
+          </a>
+        );
+      },
+      code: ({ children }) => <code className="bg-gray-200">{children}</code>,
+    },
+    listItem: {
+      bullet: ({ children }) => <li className="list-disc ml-5">{children}</li>,
+      number: ({ children }) => (
+        <li className="list-decimal ml-5">{children}</li>
+      ),
     },
     block: {
-      h2: ({ children }) => <h2 className="text-[50px]">{children}</h2>,
+      h1: ({ children }) => <h1 className="text-6xl my-4">{children}</h1>,
+      h2: ({ children }) => <h2 className="text-5xl my-4">{children}</h2>,
+      h3: ({ children }) => <h3 className="text-4xl my-4">{children}</h3>,
+      h4: ({ children }) => <h4 className="text-3xl my-4">{children}</h4>,
+      h5: ({ children }) => <h5 className="text-2xl my-4">{children}</h5>,
+      h6: ({ children }) => <h6 className="text-1xl my-4">{children}</h6>,
+      blockquote: ({ children }) => (
+        <blockquote className="text-lg font-medium text-gray-700 mx-4 my-8 pl-4 border-l-4 border-gray-300">
+          {children}
+        </blockquote>
+      ),
+      normal: ({ children }) => <p className="mb-3">{children}</p>,
     },
   };
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <>
       {data && (
-        <div className="flex flex-col mb-[100px] w-[800px]">
+        <div className="flex flex-col mb-[100px] w-[800px] mx-3">
           <div className="flex justify-between items-center">
             <div className="flex items-center">
               <div className="w-[25px] h-[25px] rounded-full">
@@ -106,6 +148,8 @@ const Article = () => {
             </div>
           </div>
 
+          <h1 className="text-6xl my-4">{data.title}</h1>
+
           <div className="w-full h-[350px] mt-5">
             <img
               className="object-cover w-full h-full rounded-md"
@@ -114,7 +158,7 @@ const Article = () => {
             />
           </div>
 
-          <div className="flex mr-2 ">
+          <div className="flex mr-2">
             {data.categories?.map(({ title }, index) => (
               <div
                 key={index}
@@ -125,7 +169,9 @@ const Article = () => {
             ))}
           </div>
 
-          <PortableText value={data.content} components={serializer} />
+          <div className="mt-[50px]">
+            <PortableText value={data.content} components={serializer} />
+          </div>
         </div>
       )}
     </>

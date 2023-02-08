@@ -1,7 +1,7 @@
 export default {
   name: 'imageBlock',
   title: 'Image Block',
-  type: 'document',
+  type: 'object',
   fields: [
     {
       name: 'image',
