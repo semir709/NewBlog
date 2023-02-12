@@ -4,6 +4,9 @@ import { client } from "../client";
 import { searchQuery } from "../utlis/data";
 import useDebounce from "../utlis/useDebunce";
 import Card from "./Card";
+import { BiCategory } from "react-icons/bi";
+import { AiOutlineUser } from "react-icons/ai";
+import { MdOutlineSubtitles } from "react-icons/md";
 
 const Search = ({ searchValue }) => {
   const debouncedSearchValue = useDebounce(searchValue, 500);
@@ -30,17 +33,26 @@ const Search = ({ searchValue }) => {
     }
   }, [debouncedSearchValue]);
 
-  console.log(data);
-
   return (
     <div className=" w-full">
       {isDefault && (
         <div className="pt-5">
-          <p className="opacity-50 text-xl">You can search the articles by:</p>
-          <ul>
-            <li className="">Title</li>
-            <li className="">Author Name</li>
-            <li className="">Categories</li>
+          <p className="text-gray text-xl font-light">
+            You can search the articles by:
+          </p>
+          <ul className="mt-5">
+            <li className="text-primary mb-2 flex items-center">
+              <MdOutlineSubtitles />
+              <span className="ml-3 font-medium">Title</span>
+            </li>
+            <li className="text-primary mb-2 flex items-center">
+              <AiOutlineUser />
+              <span className="ml-3 font-medium">Author Name</span>
+            </li>
+            <li className="text-primary mb-2 flex items-center">
+              <BiCategory />
+              <span className="ml-3 font-medium">Categories</span>
+            </li>
           </ul>
         </div>
       )}
@@ -74,7 +86,7 @@ const Search = ({ searchValue }) => {
           <div className="p-5 flex flex-col items-center">
             <img width={300} src={empty} alt={empty} />
 
-            <p className="text-1xl opacity-50">
+            <p className="text-1xl text-gray">
               There is no any article that match your search value
             </p>
           </div>

@@ -1,32 +1,47 @@
-import { man, girl, home } from "../assets/images/index.js";
+import { AiOutlineHome, AiOutlineMail, AiOutlineUser } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <div className="w-full bg-primary h-96 relative">
-      <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-        <h1 className="text-white text-7xl">Semir Selman</h1>
-      </div>
+    <div className="flex relative left-[20px] top-[20px]">
+      <Link to={"/"}>
+        <div className="flex items-center cursor-pointer group mr-[40px]">
+          <AiOutlineHome
+            className=" mr-1 group-hover:fill-primary group-hover:-translate-y-1 transition-all fill-customLight"
+            size={25}
+          />
 
-      <div className="flex absolute top-[80%] left-[50%] translate-x-[-50%] w-fit">
-        <div className="bg-white w-[150px] h-[150px] rounded mx-5 drop-shadow flex flex-col items-center justify-between p-1 hover:translate-y-[-20px] cursor-pointer duration-200 ">
-          <div className="w-full flex justify-center">
-            <img className="object-cover " src={home} alt="" />
-          </div>
-          <p className="w-fit">Home</p>
+          <p className="text-[17px] text-customLight font-medium text-[16px]  group-hover:text-primary group-hover:-translate-y-1 transition-all">
+            Home
+          </p>
         </div>
-        <div className="bg-white w-[150px] h-[150px] rounded mx-5 drop-shadow flex flex-col items-center justify-between p-1 hover:translate-y-[-20px] cursor-pointer duration-200 ">
-          <div className="w-full flex justify-center">
-            <img className="object-cover " src={man} alt="" />
-          </div>
-          <p className="w-fit">About Me</p>
+      </Link>
+
+      <Link to={"/about"}>
+        <div className="flex items-center cursor-pointer group mr-[40px]">
+          <AiOutlineUser
+            className=" mr-1 group-hover:fill-primary group-hover:-translate-y-1 transition-all fill-customLight"
+            size={25}
+          />
+
+          <p className="text-[17px] text-customLight font-medium text-[16px]  group-hover:text-primary group-hover:-translate-y-1 transition-all">
+            About
+          </p>
         </div>
-        <div className="bg-white w-[150px] h-[150px] rounded mx-5 drop-shadow flex flex-col items-center justify-between p-1 hover:translate-y-[-20px] cursor-pointer duration-200 ">
-          <div className="w-full flex justify-center">
-            <img className="object-cover " src={girl} alt="" />
-          </div>
-          <p>Contacts</p>
+      </Link>
+
+      <Link to={"/contact"}>
+        <div className="flex items-center cursor-pointer group mr-[40px]">
+          <AiOutlineMail
+            className=" mr-1 group-hover:fill-primary group-hover:-translate-y-1 transition-all fill-customLight"
+            size={25}
+          />
+
+          <p className="text-[17px] text-customLight font-medium text-[16px]  group-hover:text-primary group-hover:-translate-y-1 transition-all">
+            Contact
+          </p>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import Search from "../components/Search";
 const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   return (
-    <div className="flex flex-col items-center mb-[100px] max-w-[800px]">
+    <div className="flex flex-col items-center mb-[100px] max-w-[900px] mx-2">
       <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       <Routes>
         <Route path="/" element={<Data />} />

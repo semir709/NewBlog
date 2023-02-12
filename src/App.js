@@ -1,14 +1,15 @@
 import "./App.css";
 import Navigation from "./components/Navigation";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import Home from "./containers/Home";
 import Article from "./containers/Article";
+import { AiOutlineHome, AiOutlineUser, AiOutlineMail } from "react-icons/ai";
 function App() {
   return (
     <>
       <Navigation />
 
-      <div className=" mt-[150px] flex justify-center">
+      <div className=" mt-[70px] flex justify-center">
         <Routes>
           <Route path="/*" element={<Home />}></Route>
           <Route path="/article/:slug" element={<Article />}></Route>

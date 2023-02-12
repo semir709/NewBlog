@@ -15,19 +15,24 @@ const SearchBar = ({ setSearchValue, searchValue }) => {
     }
   };
 
-  const clearData = () => {
+  const clearData = (e) => {
     inputRef.current.value = "";
     setSearchValue("");
     setIsActive(false);
     navigate("/");
   };
+
   return (
-    <div className="sm:w-[400px] rounded-md border-[#B6B6B6] border pl-3 flex items-center mx-2">
+    <div
+      className={`sm:w-[400px] rounded-md border-[#B6B6B6] border-2 pl-3 flex items-center  ${
+        location.pathname === "/search" ? "border-primary" : ""
+      }`}
+    >
       <input
         ref={inputRef}
         onChange={change}
         onFocus={() => navigate("/search")}
-        className="py-1 w-[90%]"
+        className="py-1 w-[90%] font-normal "
         type="text"
         id="search"
         placeholder="Search"
@@ -36,7 +41,7 @@ const SearchBar = ({ setSearchValue, searchValue }) => {
       {location.pathname === "/search" && (
         <AiOutlineCloseCircle
           fontSize={25}
-          className="text-[#B6B6B6] cursor-pointer"
+          className="text-[#B6B6B6] cursor-pointer fill-primary"
           onClick={clearData}
         />
       )}
