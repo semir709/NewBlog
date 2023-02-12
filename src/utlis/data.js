@@ -92,3 +92,10 @@ export const getAbout = () => {
       }`;
   return query;
 };
+
+export const getContact = () => {
+  const query = `*[_type == "contact" ] {
+          content
+        }`;
+  return query;
+};
