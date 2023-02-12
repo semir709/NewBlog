@@ -85,3 +85,10 @@ export const takeArticle = (slug) => {
 
   return query;
 };
+
+export const getAbout = () => {
+  const query = `*[_type == "about" ] {
+        content
+      }`;
+  return query;
+};

@@ -4,6 +4,7 @@ import { Route, Routes, Link } from "react-router-dom";
 import Home from "./containers/Home";
 import Article from "./containers/Article";
 import { AiOutlineHome, AiOutlineUser, AiOutlineMail } from "react-icons/ai";
+import About from "./containers/About";
 function App() {
   return (
     <>
@@ -14,7 +15,7 @@ function App() {
           <Route path="/*" element={<Home />}></Route>
           <Route path="/article/:slug" element={<Article />}></Route>
           <Route path="/contact" element={<p>Contact</p>}></Route>
-          <Route path="/about" element={<p>About me</p>}></Route>
+          <Route path="/about" element={<About />}></Route>
         </Routes>
       </div>
     </>
