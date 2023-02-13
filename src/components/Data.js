@@ -42,7 +42,6 @@ const Data = () => {
       setHasMore(newData.length > 0);
     });
   }, [page]);
-  console.log(data);
 
   return (
     <div className="mx-2">

@@ -1,6 +1,4 @@
 import React from "react";
-
-import { deer } from "../assets/images/index";
 import { urlFor } from "../client";
 
 import { useNavigate } from "react-router-dom";
@@ -10,7 +8,7 @@ const Card = React.forwardRef(
     const navigate = useNavigate();
     return (
       <div
-        className="bg-white overflow-hidden drop-shadow-md rounded-t-[20px]  md:w-[45%] min-[520px]:w-[60%] w-full h-[250px] flex flex-col items-center cursor-pointer mx-2 my-5 relative"
+        className="bg-white group overflow-hidden drop-shadow-md rounded-t-[20px]  md:w-[45%] min-[520px]:w-[60%] w-full h-[250px] flex flex-col items-center cursor-pointer mx-2 my-5 relative"
         ref={ref}
         onClick={() => navigate(`/article/${slug?.current}`)}
       >
@@ -18,27 +16,20 @@ const Card = React.forwardRef(
           <img
             className="object-cover rounded-t-lg w-full h-full "
             src={urlFor(src)}
-            alt={deer}
+            alt={src}
           />
 
           <div className="bg-black w-full h-full opacity-20 absolute top-0 left-0"></div>
         </div>
         <div
-          className={` w-full absolute bottom-0  bg-white  group transition-all`}
+          className={` w-full absolute bottom-0  bg-white  group-hover:rounded-tl-[20px] translate-y-full transition-all group-hover:translate-y-0`}
         >
-          <div className=" w-full bg-white   ">
+          <div className=" w-full p-2 bg-white rounded-tl-[20px]  translate-y-[-100%] group-hover:translate-y-0 transition text-customGray text-[20px] font-normal">
             <div>{title}</div>
           </div>
 
-          <div className=" ">Lorem ipsum dolor sit amet.</div>
-          {/* <p
-            className={`text-secondary font-medium text-[20px] -translate-y-full  bg-white w-full  group-hover:text-primary`}
-          >
-            {title}
-          </p> */}
-
-          {/* <div className="flex items-center bg-white">
-            <div className="w-[35px] h-[35px] rounded-full relative">
+          <div className="flex items-center px-2 ">
+            <div className="w-[35px] h-[35px] relative">
               <img
                 className="object-cover w-full h-full rounded-full"
                 src={author?.image?.asset?.url}
@@ -60,7 +51,7 @@ const Card = React.forwardRef(
                 </p>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     );

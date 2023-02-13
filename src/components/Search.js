@@ -7,6 +7,7 @@ import Card from "./Card";
 import { BiCategory } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdOutlineSubtitles } from "react-icons/md";
+import { TbMoodEmpty } from "react-icons/tb";
 
 const Search = ({ searchValue }) => {
   const debouncedSearchValue = useDebounce(searchValue, 500);
@@ -84,9 +85,9 @@ const Search = ({ searchValue }) => {
         loading === false &&
         debouncedSearchValue.length > 0 && (
           <div className="p-5 flex flex-col items-center">
-            <img width={300} src={empty} alt={empty} />
+            <TbMoodEmpty size={200} className="stroke-customGray" />
 
-            <p className="text-1xl text-gray">
+            <p className="text-1xl text-customGray">
               There is no any article that match your search value
             </p>
           </div>
