@@ -11,7 +11,7 @@ function App() {
     <>
       <Navigation />
 
-      <div className=" mt-[70px] flex justify-center">
+      <div className=" mt-[70px] w-full flex justify-center">
         <Routes>
           <Route path="/*" element={<Home />}></Route>
           <Route path="/article/:slug" element={<Article />}></Route>

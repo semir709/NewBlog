@@ -24,7 +24,7 @@ const SearchBar = ({ setSearchValue, searchValue }) => {
 
   return (
     <div
-      className={`sm:w-[400px] rounded-md border-[#B6B6B6] border-2 pl-3 flex items-center  ${
+      className={`sm:w-[400px] rounded-md border-[#B6B6B6] border-2 pl-3 flex items-center mx-2  ${
         location.pathname === "/search" ? "border-primary" : ""
       }`}
     >
