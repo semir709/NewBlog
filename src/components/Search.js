@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { empty } from "../assets/images";
+import { empty, sadEmoji } from "../assets/images";
 import { client } from "../client";
 import { searchQuery } from "../utlis/data";
 import useDebounce from "../utlis/useDebunce";
@@ -85,7 +85,7 @@ const Search = ({ searchValue }) => {
         loading === false &&
         debouncedSearchValue.length > 0 && (
           <div className="p-5 flex flex-col items-center">
-            <TbMoodEmpty size={200} className="stroke-customGray" />
+            <img src={sadEmoji} alt={"sad emoji"} width={300} />
 
             <p className="text-1xl text-customGray">
               There is no any article that match your search value

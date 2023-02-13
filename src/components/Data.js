@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { searchCloud } from "../assets/images";
+import { laughEmoji, searchCloud } from "../assets/images";
 import { client } from "../client";
 import { takeArticles } from "../utlis/data";
 import Card from "./Card";
@@ -89,7 +89,7 @@ const Data = () => {
 
       {hasMore === false && data.length > 0 && (
         <div className="w-full flex flex-col items-center m-5">
-          <img width={150} src={searchCloud} alt={searchCloud} />
+          <img width={150} src={laughEmoji} alt={"laughEmoji"} />
           <p className="mt-5 opacity-50">You reach the end</p>
         </div>
       )}

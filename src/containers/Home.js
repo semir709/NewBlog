@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
-// import AppWrap from "../wrapper/AppWrap";
 
 import { Routes, Route } from "react-router-dom";
 import Data from "../components/Data";

@@ -9,6 +9,8 @@ import twitter from "../images/twitter.svg";
 import instagram from "../images/instagram.svg";
 import empty from "../images/empty-folder.png";
 import searchCloud from "../images/search-cloud.png";
+import sadEmoji from "../images/sadEmoji.svg";
+import laughEmoji from "../images/laughEmoji.svg";
 
 export {
   girl,
@@ -22,4 +24,6 @@ export {
   instagram,
   empty,
   searchCloud,
+  sadEmoji,
+  laughEmoji,
 };
