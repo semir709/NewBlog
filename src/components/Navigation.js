@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <div className="flex relative md:left-[20px] top-[20px] w-full  md:justify-start justify-center">
+    <div className="flex mt-5 md:ml-4 md:left-[20px] top-[20px] w-full  md:justify-start justify-center">
       <div className="flex w-[350px] justify-between mx-2">
         <Link to={"/"}>
           <div className="flex items-center cursor-pointer group ">
