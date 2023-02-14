@@ -6,6 +6,8 @@ import Article from "./containers/Article";
 import { AiOutlineHome, AiOutlineUser, AiOutlineMail } from "react-icons/ai";
 import About from "./containers/About";
 import Contact from "./containers/Contact";
+
+import "react-loading-skeleton/dist/skeleton.css";
 function App() {
   return (
     <>

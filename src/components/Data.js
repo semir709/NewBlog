@@ -1,13 +1,16 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import { laughEmoji, searchCloud } from "../assets/images";
 import { client } from "../client";
 import { takeArticles } from "../utlis/data";
 import Card from "./Card";
 import Loading from "./Loading";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Data = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loadingSkeleton, setLoadingSkeleton] = useState(true);
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
@@ -15,6 +18,8 @@ const Data = () => {
     const query = takeArticles();
     client.fetch(query).then((data) => {
       setData(data);
+      setLoading(false);
+      setLoadingSkeleton(false);
     });
   }, []);
 
@@ -44,10 +49,20 @@ const Data = () => {
   }, [page]);
 
   return (
-    <div className="mx-2">
-      {data.length > 0 && (
-        <div className="mt-[50px] flex flex-wrap md:justify-between justify-center">
-          {data.map(
+    <div className="mx-2 w-full">
+      <div className="mt-[50px] flex flex-wrap md:justify-between justify-center ">
+        {loadingSkeleton ? (
+          <>
+            {Array(6)
+              .fill()
+              .map(() => (
+                <div className=" rounded-t-[20px]  md:w-[45%] min-[520px]:w-[60%] w-full h-[250px] mx-2 my-5 ">
+                  <Skeleton height={250} />
+                </div>
+              ))}
+          </>
+        ) : (
+          data.map(
             (
               { title, mainImage, author, categories, publishedAt, slug },
               index
@@ -79,9 +94,9 @@ const Data = () => {
                 );
               }
             }
-          )}
-        </div>
-      )}
+          )
+        )}
+      </div>
 
       {loading && (
         <Loading text={"Loading content..."} textSize={"30px"} fontSize={30} />
